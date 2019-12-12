@@ -4,17 +4,17 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 
 @Entity
-@Table(name="LoginProfesor")
+@Table(name="INGRESO_PROFESORES")
 public class Ingreso_Profesores {
 
     @Id
-    @Column(name="id_login")
+    @Column(name="ID_INGRESO_PROFESOR")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name="correo", unique = true, nullable = false)
+    @Column(name="CORREO", unique = true, nullable = false)
     @Email
     private String correo;
-    @Column(name= "contraseña", nullable = false)
+    @Column(name= "CONTRASEÑA", nullable = false)
     private String contrasena;
 
     public Long getId() {

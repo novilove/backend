@@ -5,18 +5,18 @@ import javax.validation.constraints.Email;
 
 //anotacion de persistencia de jpa, declara que es una entidad
 @Entity
-@Table(name ="Login")//nombre de la tabla
+@Table(name ="INGRESO_ESTUDIANTES")//nombre de la tabla
 
 public class Ingreso_Estudiantes {
 
     @Id
-    @Column(name="id_login")
+    @Column(name="ID_INGRESO_ESTUDIANTE")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name="correo", unique = true, nullable = false)
+    @Column(name="CORREO", unique = true, nullable = false)
     @Email
     private String correo;
-    @Column(name= "contraseña", nullable = false)
+    @Column(name= "CONTRASEÑA", nullable = false)
     private String contrasena;
 
     public Long getId() {
