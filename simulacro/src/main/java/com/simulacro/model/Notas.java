@@ -3,29 +3,29 @@ package com.simulacro.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Notas")
+@Table(name="NOTAS")
 public class Notas {
 
     @Id
-    @Column(name="")
+    @Column(name="ID_NOTA")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name= "", nullable = false)
+    @Column(name= "NOTA_P1", nullable = false)
     private float notap1;
-    @Column(name= "", nullable = false)
+    @Column(name= "NOTA_P2", nullable = false)
     private float notap2;
-    @Column(name= "", nullable = false)
+    @Column(name= "NOTA_P3", nullable = false)
     private float notap3;
-    @Column(name= "", nullable = false)
+    @Column(name= "NOTA_P4", nullable = false)
     private float notap4;
-    @Column(name= "", nullable = false)
 
+    @Column(name= "NOTA_C1", nullable = false)
     private float notac1;
-    @Column(name= "", nullable = false)
+    @Column(name= "NOTA_C2", nullable = false)
     private float notac2;
-    @Column(name= "", nullable = false)
+    @Column(name= "NOTA_C3", nullable = false)
     private float notac3;
-    @Column(name= "", nullable = false)
+    @Column(name= "NOTA_C3", nullable = false)
     private float notac4;
 
     public Long getId() {
