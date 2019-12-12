@@ -6,35 +6,31 @@ import javax.persistence.*;
 @Table(name="NOTAS")
 public class Notas {
 
-    @Id
-    @Column(name="ID_NOTA")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(name= "NOTA_P1", nullable = false)
+    @JoinColumn(name ="ID_ESTUDIANTE", nullable = false )
+    private Long id_estudiante;
+
+    @JoinColumn(name = "ID_MATERIA")
+    private Long id_materia;
+
+    @Column(name= "NOTA_P1")
     private float notap1;
-    @Column(name= "NOTA_P2", nullable = false)
+    @Column(name= "NOTA_P2")
     private float notap2;
-    @Column(name= "NOTA_P3", nullable = false)
+    @Column(name= "NOTA_P3")
     private float notap3;
-    @Column(name= "NOTA_P4", nullable = false)
+    @Column(name= "NOTA_P4")
     private float notap4;
 
-    @Column(name= "NOTA_C1", nullable = false)
+    @Column(name= "NOTA_C1")
     private float notac1;
-    @Column(name= "NOTA_C2", nullable = false)
+    @Column(name= "NOTA_C2")
     private float notac2;
-    @Column(name= "NOTA_C3", nullable = false)
+    @Column(name= "NOTA_C3")
     private float notac3;
-    @Column(name= "NOTA_C3", nullable = false)
+    @Column(name= "NOTA_C3")
     private float notac4;
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public float getNotap1() {
         return notap1;
