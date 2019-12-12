@@ -1,16 +1,20 @@
 package com.simulacro.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 
+//anotacion de persistencia de jpa, declara que es una entidad
 @Entity
-@Table(name="LoginProfesor")
-public class LoginProfesor {
+@Table(name ="Login")//nombre de la tabla
+
+public class Ingreso_Estudiantes {
 
     @Id
     @Column(name="id_login")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name="correo", unique = true, nullable = false)
+    @Email
     private String correo;
     @Column(name= "contraseña", nullable = false)
     private String contrasena;
