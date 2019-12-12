@@ -12,20 +12,13 @@ public class Ingreso_Estudiantes {
     @Id
     @Column(name="ID_INGRESO_ESTUDIANTE")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id_ingreso_estudiantes;
     @Column(name="CORREO", unique = true, nullable = false)
     @Email
     private String correo;
     @Column(name= "CONTRASEÑA", nullable = false)
     private String contrasena;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getCorreo() {
         return correo;
