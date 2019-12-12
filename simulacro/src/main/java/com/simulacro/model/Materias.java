@@ -1,4 +1,4 @@
 package com.simulacro.model;
 
-public class Materia {
+public class Materias {
 }
