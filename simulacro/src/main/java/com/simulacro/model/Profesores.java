@@ -15,6 +15,7 @@ public class Profesores {
     private String nombreProfe;
     @Column(name="APELLIDO_PROFE")
     private String apellidoProfe;
+
     @Column(name="RUT")
     private String rut;
     @Column(name="CORREO")
