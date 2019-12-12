@@ -3,7 +3,7 @@ package com.simulacro.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="PROFESOR")
+@Table(name="PROFESORES")
 public class Profesores {
 
     @Id
@@ -11,16 +11,15 @@ public class Profesores {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idProfe;
 
-    @Column(name="NOMBRE_PROFE")
+    @Column(name="NOMBRE_PROFE", nullable = false)
     private String nombreProfe;
-    @Column(name="APELLIDO_PROFE")
+    @Column(name="APELLIDO_PROFE", nullable = false)
     private String apellidoProfe;
-
-    @Column(name="RUT")
+    @Column(name="RUT_PROFE", unique = true, nullable = false)
     private String rut;
-    @Column(name="CORREO")
+    @Column(name="CORREO_PROFE", unique = true, nullable = false)
     private String correo;
-    @Column(name="CONTRASENA")
+    @Column(name="CONTRASENA_PROFE", nullable = false)
     private String contrasena;
 
     public Profesores(Long idProfe, String nombreProfe, String apellidoProfe, String rut, String correo, String contrasena) {
