@@ -10,5 +10,4 @@ import org.springframework.stereotype.Repository;
 public interface IngresoEstudianteRepository extends JpaRepository<Ingreso_Estudiantes, Long> {
 
     Ingreso_Estudiantes findByEmail(String email);
-
 }
