@@ -2,6 +2,7 @@ package com.simulacro.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
@@ -24,8 +25,8 @@ public class SwaggerConfig {
         public Docket api() {
             return new Docket(DocumentationType.SWAGGER_2)
                     .select()
-                    .apis(RequestHandlerSelectors.basePackage("com.simulacro.controller")) //le indico el package donde se encuentran los controladores, si utilizamos any entrega todos
-                    .paths(regex("/api.*")) //paths que entregara para consultar swagger
+                    .apis(RequestHandlerSelectors.any())
+                    .paths(PathSelectors.ant("/api/**")) //paths que entregara para consultar swagger
                     .build()
                     .apiInfo(apiInfo()); //define la documentacion del servicio, informacion..
         }
@@ -33,7 +34,7 @@ public class SwaggerConfig {
         private ApiInfo apiInfo() {
             return new ApiInfo(
                     "API SIMULACRO",
-                    "API REST SWAGGER",
+                    "API SIMULACRO SWAGGER",
                     "v1.0",
                     " ",
                     new Contact("Guido Huechumilla","", "guido.huechumilla@outlook.com"),

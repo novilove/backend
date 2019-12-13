@@ -1,24 +1,35 @@
 package com.simulacro.model;
 
+
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+
+
 
 @Entity
 @Table(name="ESTUDIANTES")
 public class Estudiantes {
+  
     @Id
     @Column(name="ID_EST")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEst;
+  
     @Column(name="NOMBRE_EST", nullable = false)
     private String nombreEst;
+  
     @Column(name="APELLIDO_EST", nullable = false)
     private String apellidoEst;
+  
     @Column(name="RUT_EST", unique = true,nullable = false)
     private String rut;
+  
     @Column(name="CORREO_EST", unique = true, nullable = false)
     private String correo;
+  
     @Column(name="CONTRASENA_EST", nullable = false )
     private String contrasena;
+  
 
     public Long getIdEst() {
         return idEst;
@@ -68,13 +79,5 @@ public class Estudiantes {
         this.contrasena = contrasena;
     }
 
-    public Estudiantes(Long idEst, String nombreEst, String apellidoEst, String rut, String correo, String contrasena) {
-        this.idEst = idEst;
-        this.nombreEst = nombreEst;
-        this.apellidoEst = apellidoEst;
-        this.rut = rut;
-        this.correo = correo;
-        this.contrasena = contrasena;
-
-    }
+    
 }
