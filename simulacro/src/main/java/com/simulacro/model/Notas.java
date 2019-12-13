@@ -2,10 +2,10 @@ package com.simulacro.model;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name="NOTAS")
+//@Entity
+//@Table(name="NOTAS")
 public class Notas {
-
+    /*
     @JoinColumn(name ="ID_ESTUDIANTE", nullable = false )
     private Long id_estudiante;
 
@@ -95,4 +95,5 @@ public class Notas {
     public void setNotac4(float notac4) {
         this.notac4 = notac4;
     }
+    */
 }

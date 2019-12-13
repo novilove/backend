@@ -1,15 +1,11 @@
 package com.simulacro.model;
-
-
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-
-
 
 @Entity
 @Table(name="ESTUDIANTES")
 public class Estudiantes {
-  
+
+
     @Id
     @Column(name="ID_EST")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,14 +19,10 @@ public class Estudiantes {
   
     @Column(name="RUT_EST", unique = true,nullable = false)
     private String rut;
-  
-    @Column(name="CORREO_EST", unique = true, nullable = false)
-    @Email
-    private String correo;
-  
-    @Column(name="CONTRASENA_EST", nullable = false )
-    private String contrasena;
-  
+
+    @OneToOne
+    @JoinColumn(name = "FK_INGRESO_ESTUDIANTE", nullable = false)
+    private IngresoEstudiantes ingresoEstudiantes;
 
     public Long getIdEst() {
         return idEst;
@@ -64,21 +56,11 @@ public class Estudiantes {
         this.rut = rut;
     }
 
-    public String getCorreo() {
-        return correo;
+    public IngresoEstudiantes getIngresoEstudiantes() {
+        return ingresoEstudiantes;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setIngresoEstudiantes(IngresoEstudiantes ingresoEstudiantes) {
+        this.ingresoEstudiantes = ingresoEstudiantes;
     }
-
-    public String getContrasena() {
-        return contrasena;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
-
-    
 }

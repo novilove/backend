@@ -1,8 +1,9 @@
 package com.simulacro.controller;
 
+import com.simulacro.dto.ReqDtoCrearUsuario;
 import com.simulacro.imp.IngresoEstudiantesImplements;
 
-import com.simulacro.model.Ingreso_Estudiantes;
+import com.simulacro.model.IngresoEstudiantes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,12 +16,12 @@ public class IngresoEstudianteController {
     private IngresoEstudiantesImplements estudianteImp;
 
     @RequestMapping(method = RequestMethod.POST)
-    public Ingreso_Estudiantes guardarEstudiante(@RequestBody Ingreso_Estudiantes estudiante){
+    public IngresoEstudiantes guardarEstudiante(@RequestBody ReqDtoCrearUsuario ReqDtoCrearUsuario){
 
-        Ingreso_Estudiantes estudianteController = null;
+        IngresoEstudiantes estudianteController = null;
 
         try{
-            estudianteController = estudianteImp.guardarEstudiante(estudiante);
+            estudianteController = estudianteImp.guardarEstudiante(ReqDtoCrearUsuario);
         }catch(Exception ex){
             ex.printStackTrace();
         }

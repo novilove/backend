@@ -1,4 +1,4 @@
-package com.simulacro.simulacro;
+package com.simulacro;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

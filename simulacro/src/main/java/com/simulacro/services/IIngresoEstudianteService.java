@@ -1,8 +1,9 @@
 package com.simulacro.services;
 
-import com.simulacro.model.Ingreso_Estudiantes;
+import com.simulacro.dto.ReqDtoCrearUsuario;
+import com.simulacro.model.IngresoEstudiantes;
 
 public interface IIngresoEstudianteService {
-    Ingreso_Estudiantes guardarEstudiante(Ingreso_Estudiantes estudiante);
-    Ingreso_Estudiantes buscarId(Long id);
+    IngresoEstudiantes guardarEstudiante(ReqDtoCrearUsuario estudiante);
+    IngresoEstudiantes buscarId(Long id);
 }

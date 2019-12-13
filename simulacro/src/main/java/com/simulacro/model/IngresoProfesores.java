@@ -3,30 +3,29 @@ package com.simulacro.model;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 
-//anotacion de persistencia de jpa, declara que es una entidad
-@Entity
-@Table(name ="INGRESO_ESTUDIANTES")//nombre de la tabla
-
-public class Ingreso_Estudiantes {
-
+//@Entity
+//@Table(name="INGRESO_PROFESORES")
+public class IngresoProfesores {
+    /*
     @Id
-    @Column(name="ID_INGRESO_ESTUDIANTE")
+    @Column(name="ID_INGRESO_PROFESOR")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_ingreso_estudiantes;
+    private Long id;
 
     @Column(name="CORREO", unique = true, nullable = false)
     @Email
     private String correo;
 
-    @Column(name= "CONTRASEÑA", nullable = false)
+    @Column(name= "CONTRASENA", nullable = false)
     private String contrasena;
 
-    public Long getId_ingreso_estudiantes() {
-        return id_ingreso_estudiantes;
+
+    public Long getId() {
+        return id;
     }
 
-    public void setId_ingreso_estudiantes(Long id_ingreso_estudiantes) {
-        this.id_ingreso_estudiantes = id_ingreso_estudiantes;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getCorreo() {
@@ -43,5 +42,5 @@ public class Ingreso_Estudiantes {
 
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
-    }
+    }*/
 }

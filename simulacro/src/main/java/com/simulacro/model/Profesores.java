@@ -18,10 +18,7 @@ public class Profesores {
     private String apellidoProfe;
     @Column(name="RUT_PROFE", unique = true, nullable = false)
     private String rut;
-    @Column(name="CORREO_PROFE", unique = true, nullable = false)
-    private String correo;
-    @Column(name="CONTRASENA_PROFE", nullable = false)
-    private String contrasena;
+
 
     public Long getIdProfe() {
         return idProfe;
@@ -55,19 +52,7 @@ public class Profesores {
         this.rut = rut;
     }
 
-    public String getCorreo() {
-        return correo;
-    }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
 
-    public String getContrasena() {
-        return contrasena;
-    }
 
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
 }
