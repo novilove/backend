@@ -4,11 +4,9 @@ import com.simulacro.imp.IngresoEstudiantesImplements;
 
 import com.simulacro.model.Ingreso_Estudiantes;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/v1/ingreso_estudiantes")
 public class IngresoEstudianteController {

@@ -16,7 +16,7 @@ public class IngresoEstudiantesImplements implements IIngresoEstudianteService{
         Ingreso_Estudiantes estudianteLocal = null;
         try{
             estudianteLocal = ingresoEstudianteRepository.save(estudiante);
-            //estudianteLocal;
+
         }catch (Exception ex){
             ex.printStackTrace();
         }
@@ -24,10 +24,10 @@ public class IngresoEstudiantesImplements implements IIngresoEstudianteService{
     }
 
     @Override
-    public Ingreso_Estudiantes encontrarId(Long id) {
+    public Ingreso_Estudiantes buscarId(Long id) {
         Ingreso_Estudiantes estudianteLocal = null;
         try{
-            //estudianteLocal;
+
         }catch (Exception ex){
             ex.printStackTrace();
         }

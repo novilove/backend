@@ -22,15 +22,6 @@ public class Profesores {
     @Column(name="CONTRASENA_PROFE", nullable = false)
     private String contrasena;
 
-    public Profesores(Long idProfe, String nombreProfe, String apellidoProfe, String rut, String correo, String contrasena) {
-        this.idProfe = idProfe;
-        this.nombreProfe = nombreProfe;
-        this.apellidoProfe = apellidoProfe;
-        this.rut = rut;
-        this.correo = correo;
-        this.contrasena = contrasena;
-    }
-
     public Long getIdProfe() {
         return idProfe;
     }

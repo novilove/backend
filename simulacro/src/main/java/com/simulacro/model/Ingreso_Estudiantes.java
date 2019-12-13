@@ -13,12 +13,21 @@ public class Ingreso_Estudiantes {
     @Column(name="ID_INGRESO_ESTUDIANTE")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_ingreso_estudiantes;
+
     @Column(name="CORREO", unique = true, nullable = false)
     @Email
     private String correo;
+
     @Column(name= "CONTRASEÑA", nullable = false)
     private String contrasena;
 
+    public Long getId_ingreso_estudiantes() {
+        return id_ingreso_estudiantes;
+    }
+
+    public void setId_ingreso_estudiantes(Long id_ingreso_estudiantes) {
+        this.id_ingreso_estudiantes = id_ingreso_estudiantes;
+    }
 
     public String getCorreo() {
         return correo;
