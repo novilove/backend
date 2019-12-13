@@ -25,6 +25,7 @@ public class Estudiantes {
     private String rut;
   
     @Column(name="CORREO_EST", unique = true, nullable = false)
+    @Email
     private String correo;
   
     @Column(name="CONTRASENA_EST", nullable = false )
