@@ -1,7 +1,6 @@
 package com.simulacro.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 
 @Entity
 @Table(name="PROFESORES")
@@ -10,38 +9,43 @@ public class Profesores {
     @Id
     @Column(name="ID_PROFESOR")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idProfe;
+    private Long id;
 
     @Column(name="NOMBRE_PROFE", nullable = false)
-    private String nombreProfe;
+    private String nombre;
+
     @Column(name="APELLIDO_PROFE", nullable = false)
-    private String apellidoProfe;
+    private String apellido;
+
     @Column(name="RUT_PROFE", unique = true, nullable = false)
     private String rut;
 
+    @OneToOne
+    @JoinColumn(name = "FK_INGRESO_PROFESOR", nullable = false)
+    private IngresoProfesores ingresoProfesores;
 
-    public Long getIdProfe() {
-        return idProfe;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdProfe(Long idProfe) {
-        this.idProfe = idProfe;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getNombreProfe() {
-        return nombreProfe;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombreProfe(String nombreProfe) {
-        this.nombreProfe = nombreProfe;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getApellidoProfe() {
-        return apellidoProfe;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setApellidoProfe(String apellidoProfe) {
-        this.apellidoProfe = apellidoProfe;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getRut() {
@@ -52,7 +56,11 @@ public class Profesores {
         this.rut = rut;
     }
 
+    public IngresoProfesores getIngresoProfesores() {
+        return ingresoProfesores;
+    }
 
-
-
+    public void setIngresoProfesores(IngresoProfesores ingresoProfesores) {
+        this.ingresoProfesores = ingresoProfesores;
+    }
 }

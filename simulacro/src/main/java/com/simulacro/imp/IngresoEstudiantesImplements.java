@@ -22,25 +22,28 @@ public class IngresoEstudiantesImplements implements IIngresoEstudianteService{
         IngresoEstudiantes ingresoEstudiante = null;
         Estudiantes estudiantes = null;
         try{
-            ingresoEstudiante = new IngresoEstudiantes();
-            ingresoEstudiante.setCorreo(estudianteDto.getEmailDto());
-            ingresoEstudiante.setContrasena(estudianteDto.getPasswordDto());
+            IngresoEstudiantes validarMail = ingresoEstudianteRepository.findByCorreo(estudianteDto.getEmailDto());
+            Estudiantes validarRut = estudianteRepository.findByRut(estudianteDto.getRutDto());
+            if(validarMail == null && validarRut == null) {
+                //crear login y estudiante
+                ingresoEstudiante = new IngresoEstudiantes();
+                ingresoEstudiante.setCorreo(estudianteDto.getEmailDto());
+                ingresoEstudiante.setContrasena(estudianteDto.getPasswordDto());
+                ingresoEstudiante = ingresoEstudianteRepository.save(ingresoEstudiante);
 
-            ingresoEstudiante = ingresoEstudianteRepository.save(ingresoEstudiante);
-
-            if(null != ingresoEstudiante){
                 estudiantes = new Estudiantes();
-                estudiantes.setApellidoEst(estudianteDto.getApellidoEstDto());
-                estudiantes.setNombreEst(estudianteDto.getNombreEstDto());
+                estudiantes.setApellido(estudianteDto.getApellidoDto());
+                estudiantes.setNombre(estudianteDto.getNombreDto());
                 estudiantes.setRut(estudianteDto.getRutDto());
                 estudiantes.setIngresoEstudiantes(ingresoEstudiante);
                 estudiantes = estudianteRepository.save(estudiantes);
-            }else{
+
+                ingresoEstudiante.setEstudiantes(estudiantes);
+
+            }
+            else{
                 ingresoEstudianteRepository.deleteById(ingresoEstudiante.getIdIngresoEstudiantes());
             }
-
-
-
         }catch (Exception ex){
             ex.printStackTrace();
         }
@@ -56,6 +59,14 @@ public class IngresoEstudiantesImplements implements IIngresoEstudianteService{
             ex.printStackTrace();
         }
         return estudianteLocal;
+    }
+
+
+
+
+    @Override
+    public boolean eliminarEstudiante(Long id) {
+        return false;
     }
 
 

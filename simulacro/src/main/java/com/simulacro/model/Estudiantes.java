@@ -9,13 +9,13 @@ public class Estudiantes {
     @Id
     @Column(name="ID_EST")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idEst;
+    private Long id;
   
     @Column(name="NOMBRE_EST", nullable = false)
-    private String nombreEst;
+    private String nombre;
   
     @Column(name="APELLIDO_EST", nullable = false)
-    private String apellidoEst;
+    private String apellido;
   
     @Column(name="RUT_EST", unique = true,nullable = false)
     private String rut;
@@ -24,28 +24,28 @@ public class Estudiantes {
     @JoinColumn(name = "FK_INGRESO_ESTUDIANTE", nullable = false)
     private IngresoEstudiantes ingresoEstudiantes;
 
-    public Long getIdEst() {
-        return idEst;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdEst(Long idEst) {
-        this.idEst = idEst;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getNombreEst() {
-        return nombreEst;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombreEst(String nombreEst) {
-        this.nombreEst = nombreEst;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getApellidoEst() {
-        return apellidoEst;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setApellidoEst(String apellidoEst) {
-        this.apellidoEst = apellidoEst;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getRut() {
