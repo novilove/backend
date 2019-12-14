@@ -2,11 +2,14 @@ package com.simulacro.dto;
 
 public class DtoUsuario {
 
-    private String emailDto;
-    private String passwordDto;
     private String nombreDto;
     private String apellidoDto;
     private String rutDto;
+    private String emailDto;
+    private String passwordDto;
+
+
+
 
 
     public String getEmailDto() {

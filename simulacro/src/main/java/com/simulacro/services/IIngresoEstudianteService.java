@@ -5,7 +5,7 @@ import com.simulacro.model.IngresoEstudiantes;
 
 public interface IIngresoEstudianteService {
 
-    IngresoEstudiantes guardarEstudiante(ReqDtoCrearUsuario estudiante);
+    IngresoEstudiantes guardarEstudiante(ReqDtoCrearUsuario estudiante) throws Exception;
     IngresoEstudiantes buscarId(Long id);
 
 

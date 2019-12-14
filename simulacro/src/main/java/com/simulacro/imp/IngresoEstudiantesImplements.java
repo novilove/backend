@@ -1,11 +1,15 @@
 package com.simulacro.imp;
 
 import com.simulacro.dto.ReqDtoCrearUsuario;
+import com.simulacro.exception.MailExisteException;
+import com.simulacro.exception.UsuarioExistenteException;
+import com.simulacro.map.MapaIngresoEstudiantes;
 import com.simulacro.model.Estudiantes;
 import com.simulacro.model.IngresoEstudiantes;
 import com.simulacro.repository.EstudianteRepository;
 import com.simulacro.repository.IngresoEstudianteRepository;
 import com.simulacro.services.IIngresoEstudianteService;
+import com.simulacro.util.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +21,11 @@ public class IngresoEstudiantesImplements implements IIngresoEstudianteService{
     @Autowired
     private EstudianteRepository estudianteRepository;
 
+    @Autowired
+    private MapaIngresoEstudiantes mapa;
+
     @Override
-    public IngresoEstudiantes guardarEstudiante(ReqDtoCrearUsuario estudianteDto) {
+    public IngresoEstudiantes guardarEstudiante(ReqDtoCrearUsuario estudianteDto) throws Exception {
         IngresoEstudiantes ingresoEstudiante = null;
         Estudiantes estudiantes = null;
         try{
@@ -39,22 +46,26 @@ public class IngresoEstudiantesImplements implements IIngresoEstudianteService{
                 estudiantes = estudianteRepository.save(estudiantes);
 
                 ingresoEstudiante.setEstudiantes(estudiantes);
-
+                return ingresoEstudiante;
+            }
+            if(validarMail != null && validarRut == null){
+                throw  new MailExisteException(Constant.ERROR_MAIL_EXISTE);
             }
             else{
-                ingresoEstudianteRepository.deleteById(ingresoEstudiante.getIdIngresoEstudiantes());
+                throw new UsuarioExistenteException(Constant.ERROR_USUARIO_CREADO);
             }
         }catch (Exception ex){
             ex.printStackTrace();
+            throw new Exception(Constant.ERROR_SISTEMA);
         }
-        return ingresoEstudiante;
+
     }
 
     @Override
-    public IngresoEstudiantes buscarId(Long id) {
+    public IngresoEstudiantes buscarId(Long id)  {
         IngresoEstudiantes estudianteLocal = null;
         try{
-
+            estudianteLocal = mapa.trasformarOpcionalIngresoEstudiantes(ingresoEstudianteRepository.findById(id));
         }catch (Exception ex){
             ex.printStackTrace();
         }
