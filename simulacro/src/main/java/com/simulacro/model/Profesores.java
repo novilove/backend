@@ -18,6 +18,8 @@ public class Profesores {
     private String apellido;
 
     @Column(name="RUT_PROFE", unique = true, nullable = false)
+    //hace referencia al rut que esta aca ahora siiiiii graciiiiasaaaaaas, deverdad eres seco, el isma me dij que lo resolveria... asi como yo solaaaa, pero no entiendo mucho, gracias por la ayuda
+    //dale pero es eso
     private String rut;
 
     @OneToOne
