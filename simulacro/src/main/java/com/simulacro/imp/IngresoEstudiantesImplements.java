@@ -95,6 +95,7 @@ public class IngresoEstudiantesImplements implements IIngresoEstudianteService{
 
     @Override
     public boolean eliminarIngresoEstudiante(Long id) throws Exception{
+        boolean eliminado = false;
         try{
 
             IngresoEstudiantes estudianteLocal = mapa.trasformarOpcionalIngresoEstudiantes(ingresoEstudianteRepository.findById(id));//metodo que se encarga de transformar el objeto que retorna crud repository
@@ -102,12 +103,16 @@ public class IngresoEstudiantesImplements implements IIngresoEstudianteService{
                 throw new NoEncontradoException(Constant.ERROR_NO_ENCONTRADO);
             }else{
                 ingresoEstudianteRepository.deleteById(id);
-                return true;
+                return eliminado = true;
             }
         }catch (NoEncontradoException ex) {
             ex.printStackTrace();
             throw new NoEncontradoException(ex.getMessage());
+        }catch (Exception ex){
+            ex.printStackTrace();
         }
+
+        return eliminado;
     }
 
     @Override

@@ -85,7 +85,7 @@ public class IngresoProfesorImplements implements IIngresoProfesorService {
 
     @Override
     public boolean eliminarIngresoProfesor(Long id) throws Exception {
-
+        boolean eliminado = false;
         try{
 
             IngresoProfesores profeLocal = mapa.trasformarOpcionalIngresoProfesores(ingresoRepo.findById(id));//metodo que se encarga de transformar el objeto que retorna crud repository
@@ -93,13 +93,15 @@ public class IngresoProfesorImplements implements IIngresoProfesorService {
                 throw new NoEncontradoException(Constant.ERROR_NO_ENCONTRADO);
             }else{
                 ingresoRepo.deleteById(id);
-                return true;
+                return eliminado=true;
             }
         }catch (NoEncontradoException ex) {
             ex.printStackTrace();
             throw new NoEncontradoException(ex.getMessage());
+        }catch (Exception ex){
+            ex.printStackTrace();
         }
-
+        return eliminado;
     }
 
     @Override

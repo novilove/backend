@@ -2,13 +2,13 @@ package com.simulacro.dto;
 
 public class LlaveIngresoEstudiantes {
 
-    private String emailDto;
+    private String email;
 
     public String getEmailDto() {
-        return emailDto;
+        return email;
     }
 
     public void setEmailDto(String emailDto) {
-        this.emailDto = emailDto;
+        this.email = email;
     }
 }
