@@ -1,8 +1,10 @@
 package com.simulacro.imp;
 
 import com.simulacro.dto.ReqDtoCrearProfe;
+import com.simulacro.exception.NoEncontradoException;
 import com.simulacro.exception.UsuarioExistenteException;
 import com.simulacro.map.MapaIngresoProfe;
+import com.simulacro.model.IngresoEstudiantes;
 import com.simulacro.model.IngresoProfesores;
 import com.simulacro.model.Profesores;
 import com.simulacro.repository.IngresoProfesorRepository;
@@ -11,6 +13,9 @@ import com.simulacro.services.IIngresoProfesorService;
 import com.simulacro.util.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class IngresoProfesorImplements implements IIngresoProfesorService {
@@ -25,7 +30,7 @@ public class IngresoProfesorImplements implements IIngresoProfesorService {
     private MapaIngresoProfe mapa;
 
     @Override
-    public IngresoProfesores guardarProfesor(ReqDtoCrearProfe profesorDto) throws Exception {
+    public IngresoProfesores guardarIngresoProfesor(ReqDtoCrearProfe profesorDto) throws Exception {
         try{
             IngresoProfesores validarMail = ingresoRepo.findByCorreo(profesorDto.getEmailDto());
             Profesores validarRut = profeRepo.findByRut(profesorDto.getRutDto());
@@ -60,15 +65,53 @@ public class IngresoProfesorImplements implements IIngresoProfesorService {
     }
 
     @Override
-    public IngresoProfesores busrcarId(Long id) {
+    public IngresoProfesores busrcarId(Long id) throws Exception {
         IngresoProfesores profeLocal = null;
-        try{
+        try {
             profeLocal = mapa.trasformarOpcionalIngresoProfesores(ingresoRepo.findById(id));
+            if(null == profeLocal){
+                throw new NoEncontradoException(Constant.ERROR_NO_ENCONTRADO);
+            }
+        }catch (NoEncontradoException ex){
+            ex.printStackTrace();
+            throw new NoEncontradoException(ex.getMessage());
+
         }catch (Exception ex){
             ex.printStackTrace();
         }
         return profeLocal;
 
+    }
+
+    @Override
+    public boolean eliminarIngresoProfesor(Long id) throws Exception {
+
+        try{
+
+            IngresoProfesores profeLocal = mapa.trasformarOpcionalIngresoProfesores(ingresoRepo.findById(id));//metodo que se encarga de transformar el objeto que retorna crud repository
+            if(null == profeLocal){
+                throw new NoEncontradoException(Constant.ERROR_NO_ENCONTRADO);
+            }else{
+                ingresoRepo.deleteById(id);
+                return true;
+            }
+        }catch (NoEncontradoException ex) {
+            ex.printStackTrace();
+            throw new NoEncontradoException(ex.getMessage());
+        }
+
+    }
+
+    @Override
+    public List<IngresoProfesores> listarIngresoProfesor() throws Exception {
+        List<IngresoProfesores> listIngreso = new ArrayList<>();
+        try {
+            listIngreso = ingresoRepo.findAll();
+        }catch (Exception ex){
+            ex.printStackTrace();
+            throw new Exception(Constant.ERROR_SISTEMA);
+        }
+        return listIngreso;
     }
 
 }

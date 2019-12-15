@@ -20,11 +20,11 @@ public class IngresoEstudianteController {
     private IngresoEstudiantesImplements estudianteImp;
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Object> guardarEstudiante(@RequestBody ReqDtoCrearUsuario reqDtoCrearUsuario){
+    public ResponseEntity<Object> guardarIngresoEstudiante(@RequestBody ReqDtoCrearUsuario reqDtoCrearUsuario){
         ResponseEntity<Object> rs = null;
 
         try{
-            rs = new ResponseEntity<Object>(estudianteImp.guardarEstudiante(reqDtoCrearUsuario), HttpStatus.OK);
+            rs = new ResponseEntity<Object>(estudianteImp.guardarIngresoEstudiante(reqDtoCrearUsuario), HttpStatus.OK);
 
         }catch (UsuarioExistenteException ex) {
             ex.printStackTrace();
@@ -57,11 +57,11 @@ public class IngresoEstudianteController {
         return rs;
     }
 
-    @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
-    public ResponseEntity<Object> eliminarEstudiante(@PathVariable Long id){
+    @RequestMapping(value = "/eliminar",method = RequestMethod.DELETE)
+    public ResponseEntity<Object> eliminarIngresoEstudiante(@PathVariable Long id){
         ResponseEntity<Object> rs = null;
         try {
-            rs = new ResponseEntity<Object>(estudianteImp.eliminarEstudiante(id),HttpStatus.OK);
+            rs = new ResponseEntity<Object>(estudianteImp.eliminarIngresoEstudiante(id),HttpStatus.OK);
         }catch (NoEncontradoException ex){
             ex.printStackTrace();
             rs = new ResponseEntity<Object>(ex.getMessage(), HttpStatus.NOT_FOUND) ;
@@ -72,10 +72,10 @@ public class IngresoEstudianteController {
         return  rs;
     }
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<Object> listarEstudiantes(){
+    public ResponseEntity<Object> listarIngresoEstudiantes(){
         ResponseEntity<Object> rs = null;
         try {
-            rs = new ResponseEntity<Object>(estudianteImp.listarEstudiantes(),HttpStatus.OK);
+            rs = new ResponseEntity<Object>(estudianteImp.listarIngresoEstudiantes(),HttpStatus.OK);
         }catch (NoEncontradoException ex){
             ex.printStackTrace();
             rs = new ResponseEntity<Object>(ex.getMessage(), HttpStatus.NOT_FOUND) ;

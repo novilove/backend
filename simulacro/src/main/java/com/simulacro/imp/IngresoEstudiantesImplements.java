@@ -29,7 +29,7 @@ public class IngresoEstudiantesImplements implements IIngresoEstudianteService{
     private MapaIngresoEstudiantes mapa;
 
     @Override
-    public IngresoEstudiantes guardarEstudiante(ReqDtoCrearUsuario estudianteDto) throws Exception {
+    public IngresoEstudiantes guardarIngresoEstudiante(ReqDtoCrearUsuario estudianteDto) throws Exception {
         IngresoEstudiantes ingresoEstudiante = null;
         Estudiantes estudiantes = null;
         try {
@@ -70,6 +70,9 @@ public class IngresoEstudiantesImplements implements IIngresoEstudianteService{
 
     }
 
+
+
+
     @Override
     public IngresoEstudiantes buscarId(Long id) throws Exception {
         IngresoEstudiantes estudianteLocal = null;
@@ -91,7 +94,7 @@ public class IngresoEstudiantesImplements implements IIngresoEstudianteService{
 
 
     @Override
-    public boolean eliminarEstudiante(Long id) throws Exception{
+    public boolean eliminarIngresoEstudiante(Long id) throws Exception{
         try{
 
             IngresoEstudiantes estudianteLocal = mapa.trasformarOpcionalIngresoEstudiantes(ingresoEstudianteRepository.findById(id));//metodo que se encarga de transformar el objeto que retorna crud repository
@@ -108,7 +111,7 @@ public class IngresoEstudiantesImplements implements IIngresoEstudianteService{
     }
 
     @Override
-    public List<IngresoEstudiantes> listarEstudiantes() throws Exception {
+    public List<IngresoEstudiantes> listarIngresoEstudiantes() throws Exception {
 
         List<IngresoEstudiantes> listIngreso = new ArrayList<>();
         try {
