@@ -9,7 +9,7 @@ public class Profesores {
     @Id
     @Column(name="ID_PROFESOR")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idProfe;
 
     @Column(name="NOMBRE_PROFE", nullable = false)
     private String nombre;
@@ -18,20 +18,21 @@ public class Profesores {
     private String apellido;
 
     @Column(name="RUT_PROFE", unique = true, nullable = false)
-    //hace referencia al rut que esta aca ahora siiiiii graciiiiasaaaaaas, deverdad eres seco, el isma me dij que lo resolveria... asi como yo solaaaa, pero no entiendo mucho, gracias por la ayuda
-    //dale pero es eso
     private String rut;
 
     @OneToOne
     @JoinColumn(name = "FK_INGRESO_PROFESOR", nullable = false)
     private IngresoProfesores ingresoProfesores;
 
-    public Long getId() {
-        return id;
+    @OneToOne(mappedBy = "profesores",cascade = CascadeType.ALL)
+    private Materias materia;
+
+    public Long getIdProfe() {
+        return idProfe;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdProfe(Long idProfe) {
+        this.idProfe = idProfe;
     }
 
     public String getNombre() {
@@ -64,5 +65,13 @@ public class Profesores {
 
     public void setIngresoProfesores(IngresoProfesores ingresoProfesores) {
         this.ingresoProfesores = ingresoProfesores;
+    }
+
+    public Materias getMateria() {
+        return materia;
+    }
+
+    public void setMateria(Materias materia) {
+        this.materia = materia;
     }
 }

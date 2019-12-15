@@ -2,15 +2,15 @@ package com.simulacro.model;
 
 import javax.persistence.*;
 
-//@Entity
-//@Table(name="NOTAS")
+@Entity
+@Table(name="NOTAS")
 public class Notas {
-    /*
-    @JoinColumn(name ="ID_ESTUDIANTE", nullable = false )
-    private Long id_estudiante;
 
-    @JoinColumn(name = "ID_MATERIA")
-    private Long id_materia;
+    @JoinColumn(name ="id", nullable = false )
+    private Estudiantes estudiante;
+
+    @JoinColumn(name = "idMateria", nullable = false)
+    private Materias materia;
 
     @Column(name= "NOTA_P1")
     private float notap1;
@@ -30,7 +30,21 @@ public class Notas {
     @Column(name= "NOTA_C3")
     private float notac4;
 
+    public Estudiantes getEstudiante() {
+        return estudiante;
+    }
 
+    public void setEstudiante(Estudiantes estudiante) {
+        this.estudiante = estudiante;
+    }
+
+    public Materias getMateria() {
+        return materia;
+    }
+
+    public void setMateria(Materias materia) {
+        this.materia = materia;
+    }
 
     public float getNotap1() {
         return notap1;
@@ -95,5 +109,4 @@ public class Notas {
     public void setNotac4(float notac4) {
         this.notac4 = notac4;
     }
-    */
 }

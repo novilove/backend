@@ -24,6 +24,10 @@ public class Estudiantes {
     @JoinColumn(name = "FK_INGRESO_ESTUDIANTE", nullable = false)
     private IngresoEstudiantes ingresoEstudiantes;
 
+    @OneToOne(mappedBy = "estudiante",cascade = CascadeType.ALL)
+    private Notas nota;
+
+
     public Long getId() {
         return id;
     }
@@ -62,5 +66,13 @@ public class Estudiantes {
 
     public void setIngresoEstudiantes(IngresoEstudiantes ingresoEstudiantes) {
         this.ingresoEstudiantes = ingresoEstudiantes;
+    }
+
+    public Notas getNota() {
+        return nota;
+    }
+
+    public void setNota(Notas nota) {
+        this.nota = nota;
     }
 }

@@ -11,27 +11,27 @@ public class Materias {
     @Id
     @Column(name="ID_MATERIA")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_materia;
+    private Long idMateria;
 
     @Column(name="NOMBRE_M", nullable = false)
     private String nombreM;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="FK_PROFESOR", referencedColumnName = "ID_PROFESOR")
+    @OneToOne
+    @JoinColumn(name = "FK_ID_PROFESOR", nullable = false)
     private Profesores profesores;
 
-    public Materias(Long id_materia, String nombreM, Profesores profesores) {
-        this.id_materia = id_materia;
-        this.nombreM = nombreM;
-        this.profesores = profesores;
+    @OneToOne(mappedBy = "idMateria",cascade = CascadeType.ALL)
+    private MateriaCurso ambas;
+
+    @OneToOne(mappedBy = "materia",cascade = CascadeType.ALL)
+    private Notas nota;
+
+    public Long getIdMateria() {
+        return idMateria;
     }
 
-    public Long getId_materia() {
-        return id_materia;
-    }
-
-    public void setId_materia(Long id_materia) {
-        this.id_materia = id_materia;
+    public void setIdMateria(Long idMateria) {
+        this.idMateria = idMateria;
     }
 
     public String getNombreM() {
@@ -48,5 +48,21 @@ public class Materias {
 
     public void setProfesores(Profesores profesores) {
         this.profesores = profesores;
+    }
+
+    public MateriaCurso getAmbas() {
+        return ambas;
+    }
+
+    public void setAmbas(MateriaCurso ambas) {
+        this.ambas = ambas;
+    }
+
+    public Notas getNota() {
+        return nota;
+    }
+
+    public void setNota(Notas nota) {
+        this.nota = nota;
     }
 }
