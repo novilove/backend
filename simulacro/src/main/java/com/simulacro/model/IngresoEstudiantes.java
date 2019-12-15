@@ -11,7 +11,7 @@ public class IngresoEstudiantes {
     @Id
     @Column(name="ID_INGRESO_ESTUDIANTE")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idIngresoEstudiantes;
+    private Long id;
 
     @Column(name="CORREO", unique = true, nullable = false)
     @Email
@@ -23,12 +23,12 @@ public class IngresoEstudiantes {
     @OneToOne(mappedBy = "ingresoEstudiantes",cascade = CascadeType.ALL)
     private Estudiantes estudiantes;
 
-    public Long getIdIngresoEstudiantes() {
-        return idIngresoEstudiantes;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdIngresoEstudiantes(Long idIngresoEstudiantes) {
-        this.idIngresoEstudiantes = idIngresoEstudiantes;
+    public void setId(Long idIngresoEstudiantes) {
+        this.id = idIngresoEstudiantes;
     }
 
     public String getCorreo() {

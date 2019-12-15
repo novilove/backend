@@ -57,7 +57,7 @@ public class IngresoEstudianteController {
         return rs;
     }
 
-    @RequestMapping(value = "/eliminar",method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
     public ResponseEntity<Object> eliminarIngresoEstudiante(@PathVariable Long id){
         ResponseEntity<Object> rs = null;
         try {

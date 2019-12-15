@@ -1,6 +1,7 @@
 package com.simulacro.map;
 
 import com.simulacro.model.IngresoEstudiantes;
+import com.simulacro.model.IngresoProfesores;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -12,7 +13,7 @@ public class MapaIngresoEstudiantes {
         try{
             if(ingresoOpcional.isPresent()){
                 ingreso= new IngresoEstudiantes();
-                ingreso.setIdIngresoEstudiantes(ingresoOpcional.get().getIdIngresoEstudiantes());
+                ingreso.setId(ingresoOpcional.get().getId());
                 ingreso.setContrasena(ingresoOpcional.get().getContrasena());
                 ingreso.setCorreo(ingresoOpcional.get().getCorreo());
             }
