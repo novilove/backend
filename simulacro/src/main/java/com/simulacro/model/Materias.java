@@ -1,6 +1,7 @@
 package com.simulacro.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 //traten de entender relaciones manyToOne OneToMany como se utiliza  sisisi las googleareee hay ejemplos como hacerlo,
 //creo que eso es parte de ustedes buscar y entender para implementarlo ahora que el tiempo esta un poco a nuestro favor podre buscarlo
@@ -20,11 +21,11 @@ public class Materias {
     @JoinColumn(name = "FK_ID_PROFESOR", nullable = false)
     private Profesores profesores;
 
-    @OneToOne(mappedBy = "idMateria",cascade = CascadeType.ALL)
-    private MateriaCurso ambas;
+    @OneToMany(mappedBy = "idMateria",cascade = CascadeType.ALL)
+    private List<Materias> materias;
 
-    @OneToOne(mappedBy = "materia",cascade = CascadeType.ALL)
-    private Notas nota;
+    @OneToMany(mappedBy = "materia",cascade = CascadeType.ALL)
+    private List<Notas> notas;
 
     public Long getIdMateria() {
         return idMateria;
@@ -50,19 +51,19 @@ public class Materias {
         this.profesores = profesores;
     }
 
-    public MateriaCurso getAmbas() {
-        return ambas;
+    public List<Materias> getMaterias() {
+        return materias;
     }
 
-    public void setAmbas(MateriaCurso ambas) {
-        this.ambas = ambas;
+    public void setMaterias(List<Materias> materias) {
+        this.materias = materias;
     }
 
-    public Notas getNota() {
-        return nota;
+    public List<Notas> getNotas() {
+        return notas;
     }
 
-    public void setNota(Notas nota) {
-        this.nota = nota;
+    public void setNotas(List<Notas> notas) {
+        this.notas = notas;
     }
 }

@@ -1,6 +1,7 @@
 package com.simulacro.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="CURSOS")
@@ -13,8 +14,8 @@ public class Cursos {
     @Column(name="NOMBRE_CURSO")
     private String nombre;
 
-    @OneToOne(mappedBy = "idCurso",cascade = CascadeType.ALL)
-    private MateriaCurso ambas;
+    @OneToMany(mappedBy = "idCurso",cascade = CascadeType.ALL)
+    private List<MateriaCurso> cursos;
 
     public Long getIdCurso() {
         return idCurso;
@@ -32,11 +33,11 @@ public class Cursos {
         this.nombre = nombre;
     }
 
-    public MateriaCurso getAmbas() {
-        return ambas;
+    public List<MateriaCurso> getCursos() {
+        return cursos;
     }
 
-    public void setAmbas(MateriaCurso ambas) {
-        this.ambas = ambas;
+    public void setCursos(List<MateriaCurso> cursos) {
+        this.cursos = cursos;
     }
 }

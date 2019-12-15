@@ -14,6 +14,9 @@ import com.simulacro.util.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class IngresoEstudiantesImplements implements IIngresoEstudianteService{
     @Autowired
@@ -88,8 +91,33 @@ public class IngresoEstudiantesImplements implements IIngresoEstudianteService{
 
 
     @Override
-    public boolean eliminarEstudiante(Long id) {
-        return false;
+    public boolean eliminarEstudiante(Long id) throws Exception{
+        try{
+
+            IngresoEstudiantes estudianteLocal = mapa.trasformarOpcionalIngresoEstudiantes(ingresoEstudianteRepository.findById(id));//metodo que se encarga de transformar el objeto que retorna crud repository
+            if(null == estudianteLocal){
+                throw new NoEncontradoException(Constant.ERROR_NO_ENCONTRADO);
+            }else{
+                ingresoEstudianteRepository.deleteById(id);
+                return true;
+            }
+        }catch (NoEncontradoException ex) {
+            ex.printStackTrace();
+            throw new NoEncontradoException(ex.getMessage());
+        }
+    }
+
+    @Override
+    public List<IngresoEstudiantes> listarEstudiantes() throws Exception {
+
+        List<IngresoEstudiantes> listIngreso = new ArrayList<>();
+        try {
+            listIngreso = ingresoEstudianteRepository.findAll();
+        }catch (Exception ex){
+            ex.printStackTrace();
+            throw new Exception(Constant.ERROR_SISTEMA);
+        }
+        return listIngreso;
     }
 
 

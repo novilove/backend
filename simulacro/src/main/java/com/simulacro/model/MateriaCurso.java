@@ -10,11 +10,11 @@ public class MateriaCurso {
     @Column(name = "ID_MATERIA_CURSO")
     private Long id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "FK_ID_CURSO", nullable = false)
     private Cursos idCurso;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "FK_ID_MATERIA", nullable = false)
     private Materias idMateria;
 

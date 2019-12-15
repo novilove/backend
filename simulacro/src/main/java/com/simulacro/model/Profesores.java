@@ -1,6 +1,7 @@
 package com.simulacro.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="PROFESORES")
@@ -24,8 +25,8 @@ public class Profesores {
     @JoinColumn(name = "FK_INGRESO_PROFESOR", nullable = false)
     private IngresoProfesores ingresoProfesores;
 
-    @OneToOne(mappedBy = "profesores",cascade = CascadeType.ALL)
-    private Materias materia;
+    @OneToMany(mappedBy = "profesores",cascade = CascadeType.ALL)
+    private List<Materias> materia;
 
     public Long getIdProfe() {
         return idProfe;
@@ -67,11 +68,11 @@ public class Profesores {
         this.ingresoProfesores = ingresoProfesores;
     }
 
-    public Materias getMateria() {
+    public List<Materias> getMateria() {
         return materia;
     }
 
-    public void setMateria(Materias materia) {
+    public void setMateria(List<Materias> materia) {
         this.materia = materia;
     }
 }

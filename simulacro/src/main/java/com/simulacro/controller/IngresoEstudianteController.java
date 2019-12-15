@@ -57,4 +57,33 @@ public class IngresoEstudianteController {
         return rs;
     }
 
+    @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
+    public ResponseEntity<Object> eliminarEstudiante(@PathVariable Long id){
+        ResponseEntity<Object> rs = null;
+        try {
+            rs = new ResponseEntity<Object>(estudianteImp.eliminarEstudiante(id),HttpStatus.OK);
+        }catch (NoEncontradoException ex){
+            ex.printStackTrace();
+            rs = new ResponseEntity<Object>(ex.getMessage(), HttpStatus.NOT_FOUND) ;
+        }catch (Exception ex){
+            ex.printStackTrace();
+            rs = new ResponseEntity<Object>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR) ;
+        }
+        return  rs;
+    }
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<Object> listarEstudiantes(){
+        ResponseEntity<Object> rs = null;
+        try {
+            rs = new ResponseEntity<Object>(estudianteImp.listarEstudiantes(),HttpStatus.OK);
+        }catch (NoEncontradoException ex){
+            ex.printStackTrace();
+            rs = new ResponseEntity<Object>(ex.getMessage(), HttpStatus.NOT_FOUND) ;
+        }catch (Exception ex){
+            ex.printStackTrace();
+            rs = new ResponseEntity<Object>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR) ;
+        }
+        return  rs;
+    }
+
 }
