@@ -2,6 +2,7 @@ package com.simulacro.imp;
 
 import com.simulacro.dto.ReqDtoCrearUsuario;
 import com.simulacro.exception.MailExisteException;
+import com.simulacro.exception.NoEncontradoException;
 import com.simulacro.exception.UsuarioExistenteException;
 import com.simulacro.map.MapaIngresoEstudiantes;
 import com.simulacro.model.Estudiantes;
@@ -28,10 +29,10 @@ public class IngresoEstudiantesImplements implements IIngresoEstudianteService{
     public IngresoEstudiantes guardarEstudiante(ReqDtoCrearUsuario estudianteDto) throws Exception {
         IngresoEstudiantes ingresoEstudiante = null;
         Estudiantes estudiantes = null;
-        try{
+        try {
             IngresoEstudiantes validarMail = ingresoEstudianteRepository.findByCorreo(estudianteDto.getEmailDto());
             Estudiantes validarRut = estudianteRepository.findByRut(estudianteDto.getRutDto());
-            if(validarMail == null && validarRut == null) {
+            if (validarMail == null && validarRut == null) {
                 //crear login y estudiante
                 ingresoEstudiante = new IngresoEstudiantes();
                 ingresoEstudiante.setCorreo(estudianteDto.getEmailDto());
@@ -48,12 +49,17 @@ public class IngresoEstudiantesImplements implements IIngresoEstudianteService{
                 ingresoEstudiante.setEstudiantes(estudiantes);
                 return ingresoEstudiante;
             }
-            if(validarMail != null && validarRut == null){
-                throw  new MailExisteException(Constant.ERROR_MAIL_EXISTE);
-            }
-            else{
+            if (validarMail != null && validarRut == null) {
+                throw new MailExisteException(Constant.ERROR_MAIL_EXISTE);
+            } else {
                 throw new UsuarioExistenteException(Constant.ERROR_USUARIO_CREADO);
             }
+        }catch (MailExisteException ex) {
+            ex.printStackTrace();
+            throw new MailExisteException(ex.getMessage());
+        }catch (UsuarioExistenteException ex){
+            ex.printStackTrace();
+            throw new UsuarioExistenteException(ex.getMessage());
         }catch (Exception ex){
             ex.printStackTrace();
             throw new Exception(Constant.ERROR_SISTEMA);
@@ -62,10 +68,16 @@ public class IngresoEstudiantesImplements implements IIngresoEstudianteService{
     }
 
     @Override
-    public IngresoEstudiantes buscarId(Long id)  {
+    public IngresoEstudiantes buscarId(Long id) throws Exception {
         IngresoEstudiantes estudianteLocal = null;
-        try{
+        try {
             estudianteLocal = mapa.trasformarOpcionalIngresoEstudiantes(ingresoEstudianteRepository.findById(id));
+            if(null == estudianteLocal){
+                throw new NoEncontradoException(Constant.ERROR_NO_ENCONTRADO);
+            }
+        }catch (NoEncontradoException ex){
+            ex.printStackTrace();
+            throw new NoEncontradoException(ex.getMessage());
         }catch (Exception ex){
             ex.printStackTrace();
         }

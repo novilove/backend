@@ -25,7 +25,7 @@ public class Estudiantes {
     private IngresoEstudiantes ingresoEstudiantes;
 
     @OneToOne(mappedBy = "estudiante",cascade = CascadeType.ALL)
-    private Notas nota;
+    private Notas notas;
 
 
     public Long getId() {
@@ -68,11 +68,11 @@ public class Estudiantes {
         this.ingresoEstudiantes = ingresoEstudiantes;
     }
 
-    public Notas getNota() {
-        return nota;
+    public Notas getNotas() {
+        return notas;
     }
 
-    public void setNota(Notas nota) {
-        this.nota = nota;
+    public void setNotas(Notas nota) {
+        this.notas = nota;
     }
 }

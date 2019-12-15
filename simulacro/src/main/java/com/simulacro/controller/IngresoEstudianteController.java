@@ -2,6 +2,7 @@ package com.simulacro.controller;
 
 import com.simulacro.dto.ReqDtoCrearUsuario;
 import com.simulacro.exception.MailExisteException;
+import com.simulacro.exception.NoEncontradoException;
 import com.simulacro.exception.UsuarioExistenteException;
 import com.simulacro.imp.IngresoEstudiantesImplements;
 import com.simulacro.model.IngresoEstudiantes;
@@ -26,8 +27,10 @@ public class IngresoEstudianteController {
             rs = new ResponseEntity<Object>(estudianteImp.guardarEstudiante(reqDtoCrearUsuario), HttpStatus.OK);
 
         }catch (UsuarioExistenteException ex) {
+            ex.printStackTrace();
             rs = new ResponseEntity<Object>(ex.getMessage(), HttpStatus.NOT_ACCEPTABLE);
         }catch (MailExisteException ex){
+            ex.printStackTrace();
             rs = new ResponseEntity<Object>(ex.getMessage(), HttpStatus.NOT_ACCEPTABLE);
 
         }catch(Exception ex){
@@ -37,5 +40,21 @@ public class IngresoEstudianteController {
         return rs;
     }
 
+    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
+    public ResponseEntity<Object> buscarId(@PathVariable Long id){
+        ResponseEntity<Object> rs = null;
+
+        try{
+            rs = new ResponseEntity<Object>(estudianteImp.buscarId(id), HttpStatus.OK);
+        }catch (NoEncontradoException ex){
+            ex.printStackTrace();
+            rs = new ResponseEntity<Object>(ex.getMessage(), HttpStatus.NOT_FOUND);
+        }catch (Exception ex){
+            ex.printStackTrace();
+            rs = new ResponseEntity<Object>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+
+        }
+        return rs;
+    }
 
 }

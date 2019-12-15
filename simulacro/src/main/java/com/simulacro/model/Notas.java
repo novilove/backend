@@ -6,10 +6,14 @@ import javax.persistence.*;
 @Table(name="NOTAS")
 public class Notas {
 
-    @JoinColumn(name ="id", nullable = false )
+    @Id
+    @Column(name = "ID_NOTAS")
+    private Long id;
+
+    @JoinColumn(name ="FK_ID_ESTUDIANTES", nullable = false )
     private Estudiantes estudiante;
 
-    @JoinColumn(name = "idMateria", nullable = false)
+    @JoinColumn(name = "ID_MATERIAS", nullable = false)
     private Materias materia;
 
     @Column(name= "NOTA_P1")
@@ -29,6 +33,14 @@ public class Notas {
     private float notac3;
     @Column(name= "NOTA_C3")
     private float notac4;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Estudiantes getEstudiante() {
         return estudiante;
