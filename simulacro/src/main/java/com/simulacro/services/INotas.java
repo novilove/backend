@@ -1,9 +1,11 @@
 package com.simulacro.services;
 
+import com.simulacro.dto.NotasDto;
 import com.simulacro.model.Notas;
 
 public interface INotas {
-Notas VerNotas(Notas notas);
+
+    Notas guardar(NotasDto notas) throws Exception;
 
 }
 
