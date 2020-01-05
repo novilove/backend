@@ -3,30 +3,40 @@ package com.simulacro.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Notas")
+@Table(name="NOTAS")
 public class Notas {
 
     @Id
-    @Column(name="")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID_NOTAS")
     private Long id;
-    @Column(name= "", nullable = false)
-    private float notap1;
-    @Column(name= "", nullable = false)
-    private float notap2;
-    @Column(name= "", nullable = false)
-    private float notap3;
-    @Column(name= "", nullable = false)
-    private float notap4;
-    @Column(name= "", nullable = false)
 
+    @ManyToOne
+    @JoinColumn(name ="FK_ID_ESTUDIANTES", nullable = false )
+    private Estudiantes estudiante;
+
+    @ManyToOne
+    @JoinColumn(name = "FK_ID_MATERIAS", nullable = false)
+    private Materias materia;
+
+    @Column(name= "NOTA_P1")
+    private float notap1;
+    @Column(name= "NOTA_P2")
+    private float notap2;
+    @Column(name= "NOTA_P3")
+    private float notap3;
+    @Column(name= "NOTA_P4")
+    private float notap4;
+
+    @Column(name= "NOTA_C1")
     private float notac1;
-    @Column(name= "", nullable = false)
+    @Column(name= "NOTA_C2")
     private float notac2;
-    @Column(name= "", nullable = false)
+
+    @Column(name= "NOTA_C3")
     private float notac3;
-    @Column(name= "", nullable = false)
+    @Column(name= "NOTA_C4")
     private float notac4;
+
 
     public Long getId() {
         return id;
@@ -34,6 +44,22 @@ public class Notas {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Estudiantes getEstudiante() {
+        return estudiante;
+    }
+
+    public void setEstudiante(Estudiantes estudiante) {
+        this.estudiante = estudiante;
+    }
+
+    public Materias getMateria() {
+        return materia;
+    }
+
+    public void setMateria(Materias materia) {
+        this.materia = materia;
     }
 
     public float getNotap1() {
